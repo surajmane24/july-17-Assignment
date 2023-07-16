@@ -15,7 +15,7 @@ public class BookCricketTest {
 			player1.setName(sc.next());
 			System.out.print("Enter player 2 name => ");
 			player2.setName(sc.next());
-			//Calling Game Start Method...
+	//Calling Game Start Method...
 			gameStart(player1, player2);
 		}
 	}
@@ -30,6 +30,7 @@ public class BookCricketTest {
 		Scanner sc = new Scanner(System.in);
 		int tempResult = 1;
 		System.out.println("Player==> " + player.getName());
+	// Algorithm when first player is playing
 		while(tempResult != 0) {
 			System.out.print("Enter 1 to open a book: ");
 			int userInput = sc.nextInt();
@@ -57,6 +58,7 @@ public class BookCricketTest {
 		Scanner sc = new Scanner(System.in);
 		int tempResult = 1;
 		System.out.println("Player==> " + player2.getName());
+	// Algorithm when Second player is playing
 		while(tempResult != 0) {
 			System.out.print("Enter 1 to open a book: ");
 			int userInput = sc.nextInt();
@@ -71,8 +73,15 @@ public class BookCricketTest {
 				tempResult = player2.getPoint();
 				if(player2.getPoint() == 0 || BookCricket.round == 0) {
 					if(BookCricket.round == 0) {
-						System.out.println("--------"+player2.getName()+" Rounds are Over"+"--------");
-						System.out.println("--------"+player1.getName()+" Win Match !!"+"--------");
+						if(player2.getScore() > player1.getScore()) {
+							System.out.println("--------"+player2.getName()+" Win Match !!"+"--------");
+							break;
+						}
+						else {
+							System.out.println("--------"+player2.getName()+" Rounds are Over"+"--------");
+							System.out.println("--------"+player1.getName()+" Win Match !!"+"--------");
+							break;
+						}	
 					}
 					else{
 						System.out.println("--------"+player1.getName()+" Win Match !!"+"--------");
